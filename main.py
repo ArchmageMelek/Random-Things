@@ -12,4 +12,5 @@ thing2 = int(sys.argv[2])
 #print(thing)
 #print(thing2)
 
-print(math.floor(random.random()*(thing2-thing+1)+thing))
+#red back
+print("\033[41m" + str(math.floor(random.random()*(thing2-thing+1)+thing)) + "\033[0m")
