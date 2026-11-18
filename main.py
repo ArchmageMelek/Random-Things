@@ -1,30 +1,36 @@
-# do random styff!
+# Random generator, with two arguments it returns a random number between the two, with more than two, it returns one at random
 import sys
 import random
 import math
 
-#print(sys.argv)
+# text colour options
+REDBACK = "\033[41m"
+CLEAR = "\033[0m"
 
-if len(sys.argv) > 3:
-    # grab allt he things
-    thing1 = sys.argv[1]
-    thing2 = sys.argv[2]
-    thing3 = sys.argv[3]
+# pop out the filename leaving only the args behind
+filename = sys.argv.pop(0)
+
+if len(sys.argv) == 2:
+    # Two args means return a number between the two inclusively
+    try:
+        # Try to grab the two numbers and convert to ints
+        lowest_number = int(sys.argv[0])
+        highest_number = int(sys.argv[1])
+    except ValueError as ex:
+        # Conversion failed
+        print(REDBACK + "You must supply two integers." + CLEAR)
+    except Exception as ex:
+        # Some other exception!
+        print(REDBACK + type(ex).__name__ + ": " + str(ex) + CLEAR)
+    else:
+        # If no error occured, generate a random int between the two values
+        print(REDBACK + str(random.randint(lowest_number, highest_number)) + CLEAR)
+elif len(sys.argv) > 2:
+    # more than 2 args means select one at random and print
+    item_list = sys.argv
     
-    #print(thing1, thing2, thing3)
-    
-    if len(sys.argv) > 4:
-        thing4 = sys.argv[4]
-        
-        print("\033[41m" + random.choice([thing1, thing2, thing3, thing4]) + "\033[0m")
-    else: 
-        print("\033[41m" + random.choice([thing1, thing2, thing3]) + "\033[0m")
+    # Pick one item at random and print it
+    print(REDBACK + random.choice(item_list) + CLEAR)
 else:
-    thing = int(sys.argv[1])
-    thing2 = int(sys.argv[2])
-
-    #print(thing)
-    #print(thing2)
-
-    #red back
-    print("\033[41m" + str(math.floor(random.random()*(thing2-thing+1)+thing)) + "\033[0m")
+     # Fewer than 2 args supplied
+     print(REDBACK + "Please supply at least 2 args." + CLEAR)
