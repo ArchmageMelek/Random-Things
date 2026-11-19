@@ -1,7 +1,6 @@
 # Random generator, with two arguments it returns a random number between the two, with more than two, it returns one at random
 import sys
 import random
-import math
 
 # text colour options
 REDBACK = "\033[41m"
