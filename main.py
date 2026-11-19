@@ -3,7 +3,7 @@ import sys
 import random
 
 # text colour options
-REDBACK = "\033[41m"
+GREENBACK = "\033[42m"
 CLEAR = "\033[0m"
 
 # pop out the filename leaving only the args behind
@@ -17,19 +17,19 @@ if len(sys.argv) == 2:
         highest_number = int(sys.argv[1])
     except ValueError as ex:
         # Conversion failed
-        print(REDBACK + "You must supply two integers." + CLEAR)
+        print(GREENBACK + "You must supply two integers." + CLEAR)
     except Exception as ex:
         # Some other exception!
-        print(REDBACK + type(ex).__name__ + ": " + str(ex) + CLEAR)
+        print(GREENBACK + type(ex).__name__ + ": " + str(ex) + CLEAR)
     else:
         # If no error occured, generate a random int between the two values
-        print(REDBACK + str(random.randint(lowest_number, highest_number)) + CLEAR)
+        print(GREENBACK + str(random.randint(lowest_number, highest_number)) + CLEAR)
 elif len(sys.argv) > 2:
     # more than 2 args means select one at random and print
     item_list = sys.argv
     
     # Pick one item at random and print it
-    print(REDBACK + random.choice(item_list) + CLEAR)
+    print(GREENBACK + random.choice(item_list) + CLEAR)
 else:
      # Fewer than 2 args supplied
-     print(REDBACK + "Please supply at least 2 args." + CLEAR)
+     print(GREENBACK + "Please supply at least 2 args." + CLEAR)
